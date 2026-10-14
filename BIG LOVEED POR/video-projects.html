@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Showreel | DË BÎG LØVËD</title>
+<meta name="description" content="OBJ video editing showreel by Obafemi Beloved Jesulayomi.">
+<style>
+:root{--red:#ff2a2a;--red2:#ff5757;--bg:#070707;--line:#24242a;--muted:#9c9ca5;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 12% 8%,rgba(255,42,42,.15),transparent 28%),radial-gradient(circle at 88% 80%,rgba(255,42,42,.08),transparent 28%),var(--bg);color:var(--white);min-height:100vh}
+body.modal-open{overflow:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:auto;padding:28px 22px 70px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:55px}.brand{font-weight:950;letter-spacing:.16em;font-size:1rem}.brand span{color:var(--red)}
+.back{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);padding:10px 15px;border-radius:999px;font-size:.78rem;background:#0c0c0f;transition:.25s}.back:hover{border-color:var(--red);transform:translateY(-2px)}
+.hero{display:grid;grid-template-columns:1fr .75fr;gap:42px;align-items:center;margin-bottom:40px}.eyebrow{color:var(--red2);text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:800}.hero h1{font-size:clamp(2.6rem,6.5vw,6rem);line-height:.93;margin:12px 0 20px}.hero h1 span{color:var(--red)}.hero p{max-width:700px;color:var(--muted);line-height:1.75;font-size:.97rem}
+.info-card{background:linear-gradient(145deg,#151518,#0d0d10);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 25px 70px rgba(0,0,0,.35)}.info-row{display:flex;justify-content:space-between;gap:15px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.85rem}.info-row:last-child{border-bottom:0}.info-row span:last-child{color:var(--red2);font-weight:800;text-align:right}
+.showcase{display:grid;grid-template-columns:minmax(260px,.7fr) minmax(280px,1fr);gap:34px;align-items:center;background:linear-gradient(145deg,#121216,#09090b);border:1px solid var(--line);border-radius:30px;padding:24px;box-shadow:0 35px 100px rgba(0,0,0,.4)}
+.video-frame{position:relative;border-radius:22px;overflow:hidden;background:#000;border:1px solid #292932;box-shadow:0 25px 70px rgba(0,0,0,.45)}.video-frame video{width:100%;display:block;aspect-ratio:9/16;max-height:76vh;object-fit:cover}.video-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.24));pointer-events:none}.play-button{width:82px;height:82px;border-radius:50%;background:rgba(255,42,42,.94);display:grid;place-items:center;font-size:1.4rem;box-shadow:0 0 0 10px rgba(255,42,42,.14),0 20px 50px rgba(0,0,0,.5)}
+.copy{padding:12px 10px}.copy .mini{color:var(--red2);text-transform:uppercase;letter-spacing:.18em;font-size:.66rem;font-weight:800}.copy h2{font-size:clamp(1.9rem,4vw,3.5rem);line-height:1;margin:10px 0 16px}.copy p{color:var(--muted);line-height:1.75;font-size:.9rem}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 25px}.chip{border:1px solid var(--line);padding:7px 10px;border-radius:999px;color:#c8c8cf;font-size:.68rem}.actions{display:flex;flex-wrap:wrap;gap:10px}.btn{border:0;background:var(--red);color:#fff;padding:12px 18px;border-radius:10px;font-size:.8rem;font-weight:850;cursor:pointer}.btn.secondary{background:#151519;border:1px solid var(--line)}.btn:hover{transform:translateY(-2px)}
+.story{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.story-card{border:1px solid var(--line);border-radius:18px;padding:18px;background:#0d0d10}.story-card span{display:block;color:var(--red2);font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;font-weight:800;margin-bottom:7px}.story-card h3{font-size:1rem;margin-bottom:7px}.story-card p{font-size:.76rem;color:var(--muted);line-height:1.6}
+.modal{position:fixed;inset:0;display:none;z-index:9999;place-items:center;padding:18px}.modal.show{display:grid}.backdrop{position:absolute;inset:0;background:rgba(0,0,0,.86);backdrop-filter:blur(10px)}.panel{position:relative;z-index:2;width:min(620px,100%);background:#0c0c10;border:1px solid #2b2b33;border-radius:24px;padding:16px;box-shadow:0 30px 100px rgba(0,0,0,.6)}.panel video{width:100%;max-height:82vh;display:block;background:#000;border-radius:16px}.close{position:absolute;right:12px;top:12px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid #34343b;background:#0b0b0d;color:#fff;font-size:1.5rem;cursor:pointer}.close:hover{background:var(--red);border-color:var(--red)}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.showcase{grid-template-columns:1fr;max-width:720px;margin:auto}.video-frame video{max-height:720px}.story{grid-template-columns:1fr 1fr}.topbar{margin-bottom:35px}}
+@media(max-width:560px){.wrap{padding:20px 14px 50px}.hero h1{font-size:2.9rem}.showcase{padding:14px;border-radius:24px}.story{grid-template-columns:1fr}.actions .btn{width:100%;text-align:center}.back{font-size:.7rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">DË BÎG <span>LØVËD</span> / VIDEO LAB</div>
+    <a class="back" href="index.html">← Back to Portfolio</a>
+  </div>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Motion Media / OBJ Showreel</div>
+      <h1>One reel.<br><span>Six styles.</span></h1>
+      <p>A single cinematic demo reel combining the kind of work you want to offer: church short clips, event highlights, brand promos, social reels and cinematic storytelling.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-row"><span>Showreel</span><span>01 Video</span></div>
+      <div class="info-row"><span>Length</span><span>24 seconds</span></div>
+      <div class="info-row"><span>Format</span><span>9:16 Vertical</span></div>
+      <div class="info-row"><span>Style</span><span>Social + Cinematic</span></div>
+    </div>
+  </section>
+
+  <section class="showcase">
+    <div class="video-frame">
+      <video id="previewVideo" poster="vid.png" muted autoplay loop playsinline>
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay"><span class="play-button">▶</span></div>
+    </div>
+    <div class="copy">
+      <div class="mini">Featured Video</div>
+      <h2>OBJ Video<br><span style="color:var(--red)">Showreel</span></h2>
+      <p>This is the only video on the page. It is a continuous portfolio reel built from the coded demo scenes you requested, giving visitors one strong piece to watch instead of six separate projects.</p>
+      <div class="chips">
+        <span class="chip">Church</span><span class="chip">Events</span><span class="chip">Brand Promo</span><span class="chip">Social Reels</span><span class="chip">Cinematic</span>
+      </div>
+      <div class="actions">
+        <button class="btn" id="openReel">▶ Play Full Reel</button>
+        <a class="btn secondary" href="index.html#contact">Hire OBJ →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="story-card"><span>01 / Worship</span><h3>Church Short Clips</h3><p>Fast, emotional opening designed for worship highlights and service moments.</p></div>
+    <div class="story-card"><span>02 / Brand</span><h3>Campaign Visuals</h3><p>Strong motion graphics, branded pacing, and polished storytelling for premium digital presentations.</p></div>
+    <div class="story-card"><span>03 / Events</span><h3>Event Highlights</h3><p>Energetic cuts for celebrations, launches, parties and memorable event moments.</p></div>
+    <div class="story-card"><span>04 / Brand</span><h3>Brand Promo</h3><p>Clean commercial presentation for products, services and digital campaigns.</p></div>
+    <div class="story-card"><span>05 / Social</span><h3>Social Reels</h3><p>Short-form visual rhythm aimed at TikTok, Instagram and mobile-first audiences.</p></div>
+    <div class="story-card"><span>06 / Story</span><h3>Cinematic Story</h3><p>Mood-driven visuals for interviews, documentaries, lifestyle and storytelling.</p></div>
+  </section>
+</div>
+
+<div class="modal" id="reelModal" aria-hidden="true">
+  <div class="backdrop" id="backdrop"></div>
+  <div class="panel">
+    <button class="close" id="close" type="button" aria-label="Close">×</button>
+    <video id="fullVideo" controls playsinline>
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<script>
+const modal=document.getElementById('reelModal');
+const fullVideo=document.getElementById('fullVideo');
+const open=document.getElementById('openReel');
+const close=document.getElementById('close');
+const backdrop=document.getElementById('backdrop');
+function openModal(){modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');fullVideo.currentTime=0;fullVideo.play().catch(()=>{});}
+function closeModal(){fullVideo.pause();modal.classList.remove('show');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');}
+open.addEventListener('click',openModal);close.addEventListener('click',closeModal);backdrop.addEventListener('click',closeModal);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>

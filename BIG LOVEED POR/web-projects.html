@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="De Big Loved Web Development — realistic project showcase." />
+  <title>Web Projects | DË BÎG LØVËD</title>
+  <style>
+    :root {
+      --bg:#08080b;
+      --panel:#101116;
+      --panel-2:#15161d;
+      --line:#252630;
+      --text:#f4f4f5;
+      --muted:#a0a2ad;
+      --accent:#ff2a2a;
+      --accent-2:#ff6767;
+      --shadow:0 24px 70px rgba(0,0,0,.42);
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text); background:
+        radial-gradient(circle at 10% 0%, rgba(255,42,42,.10), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(255,255,255,.05), transparent 26%),
+        var(--bg);
+      min-height:100vh;
+    }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    .topbar {
+      position:sticky; top:0; z-index:20; display:flex; justify-content:space-between;
+      align-items:center; padding:16px 5vw; backdrop-filter:blur(18px);
+      background:rgba(8,8,11,.78); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .logo { font-weight:900; letter-spacing:3px; font-size:1rem; }
+    .logo span { color:var(--accent); }
+    .back { padding:10px 15px; border:1px solid var(--line); border-radius:999px; color:#ddd; transition:.2s; }
+    .back:hover { border-color:#454550; transform:translateY(-1px); }
+    .hero { max-width:1200px; margin:0 auto; padding:88px 5vw 42px; }
+    .tag { display:inline-flex; gap:8px; align-items:center; color:var(--accent-2); text-transform:uppercase; font-size:.72rem; letter-spacing:2px; font-weight:800; }
+    .tag::before { content:""; width:26px; height:1px; background:var(--accent); }
+    h1 { margin-top:18px; font-size:clamp(2.7rem,8vw,6.2rem); line-height:.94; letter-spacing:-.06em; max-width:900px; }
+    h1 span { color:var(--accent); }
+    .hero p { max-width:760px; margin-top:22px; color:var(--muted); line-height:1.75; font-size:1.02rem; }
+    .filters { max-width:1200px; margin:10px auto 34px; padding:0 5vw; display:flex; gap:10px; flex-wrap:wrap; }
+    .filter { background:var(--panel); color:#c9cad0; border:1px solid var(--line); padding:10px 14px; border-radius:999px; cursor:pointer; }
+    .filter.active,.filter:hover { background:#191a20; border-color:rgba(255,42,42,.45); color:#fff; }
+    .projects { max-width:1200px; margin:0 auto; padding:0 5vw 90px; display:grid; grid-template-columns:repeat(12,1fr); gap:22px; }
+    .project {
+      grid-column:span 6; border:1px solid var(--line); background:linear-gradient(180deg,#121319,#0e0f13);
+      border-radius:24px; overflow:hidden; box-shadow:var(--shadow); transition:transform .3s ease,border-color .3s ease;
+    }
+    .project:hover { transform:translateY(-6px); border-color:#3a3b46; }
+    .project.featured { grid-column:span 12; }
+    .visual { min-height:280px; padding:20px; display:grid; place-items:center; position:relative; overflow:hidden; background:radial-gradient(circle at 80% 20%, rgba(255,42,42,.17), transparent 30%),#0b0c10; }
+    .visual::after { content:""; position:absolute; inset:14px; border:1px solid rgba(255,255,255,.06); border-radius:17px; pointer-events:none; }
+    .browser { width:min(92%,700px); background:#17181e; border:1px solid #2b2c35; border-radius:15px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.5); }
+    .browser-head { height:34px; display:flex; align-items:center; gap:7px; padding:0 12px; border-bottom:1px solid #292a32; }
+    .dot { width:7px; height:7px; border-radius:50%; background:#555861; }
+    .browser-body { display:grid; grid-template-columns:105px 1fr; min-height:210px; }
+    .side { background:#111217; padding:14px 9px; border-right:1px solid #292a32; }
+    .side i { display:block; height:7px; background:#2d2f38; border-radius:20px; margin:9px 2px; }
+    .dashboard { padding:16px; }
+    .metric-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .metric { height:65px; padding:9px; border:1px solid #2b2c35; border-radius:10px; background:#15161c; }
+    .metric b { display:block; font-size:.82rem; }
+    .metric small { color:#777985; font-size:.58rem; }
+    .chart { margin-top:10px; height:100px; border:1px solid #2b2c35; border-radius:10px; position:relative; overflow:hidden; background:linear-gradient(180deg,rgba(255,42,42,.06),transparent); }
+    .chart svg { width:100%; height:100%; }
+    .mobile { width:190px; min-height:330px; border:7px solid #1d1e25; border-radius:34px; box-shadow:0 25px 55px rgba(0,0,0,.5); background:#07080b; overflow:hidden; padding:12px; }
+    .mobile .notch { width:74px; height:17px; background:#1d1e25; border-radius:20px; margin:0 auto 17px; }
+    .app-brand { font-size:.9rem; font-weight:900; margin-bottom:12px; }
+    .balance { background:linear-gradient(135deg,#ff2a2a,#9d1111); border-radius:16px; padding:16px; }
+    .balance small { opacity:.8; font-size:.55rem; }
+    .balance strong { display:block; margin-top:5px; font-size:1.25rem; }
+    .quick { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:10px 0; }
+    .quick span { height:36px; border:1px solid #282a33; border-radius:9px; display:grid; place-items:center; font-size:.55rem; color:#bbb; }
+    .list { display:grid; gap:6px; }
+    .list div { height:37px; border:1px solid #272831; border-radius:8px; padding:8px; font-size:.55rem; color:#a7a8b0; }
+    .bet-slip { width:min(92%,500px); display:grid; grid-template-columns:1.2fr .8fr; gap:14px; }
+    .bets { background:#111218; border:1px solid #292b34; border-radius:16px; padding:14px; }
+    .match { background:#17181e; border:1px solid #292b34; border-radius:12px; padding:12px; margin-top:8px; }
+    .match small { color:#8b8d99; }
+    .odds { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:8px; }
+    .odds span { background:#22242c; padding:8px; border-radius:7px; text-align:center; font-size:.7rem; }
+    .slip { background:linear-gradient(180deg,#17181e,#101116); border:1px solid #33343d; border-radius:16px; padding:15px; }
+    .slip h4 { margin-bottom:10px; }
+    .slip .ticket { border-left:3px solid var(--accent); padding-left:8px; margin:8px 0; font-size:.72rem; color:#b7b8c0; }
+    .school { width:min(94%,700px); background:#f6f7fb; color:#17181d; border-radius:15px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.5); }
+    .school-head { padding:16px 18px; background:#13151b; color:#fff; display:flex; justify-content:space-between; }
+    .school-body { display:grid; grid-template-columns:150px 1fr; min-height:205px; }
+    .school-side { background:#eaedf5; padding:12px; }
+    .school-side b { font-size:.7rem; }
+    .school-side p { font-size:.56rem; color:#707481; margin-top:9px; }
+    .school-main { padding:16px; }
+    .grade-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .grade { border:1px solid #dfe2eb; border-radius:10px; padding:10px; }
+    .grade strong { display:block; font-size:.78rem; }
+    .grade small { color:#777; font-size:.55rem; }
+    .portfolio { width:min(92%,680px); display:grid; grid-template-columns:1.1fr .9fr; gap:12px; }
+    .portfolio-card { border:1px solid #2c2e37; border-radius:17px; padding:17px; background:#121319; }
+    .portfolio-card h3 { margin-bottom:7px; }
+    .portfolio-card p { color:#888b97; font-size:.72rem; line-height:1.6; }
+    .project-content { padding:24px; }
+    .project-meta { display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center; }
+    .project h2 { font-size:1.35rem; letter-spacing:-.02em; }
+    .project p { color:var(--muted); margin-top:9px; line-height:1.65; font-size:.9rem; }
+    .tech { display:flex; gap:7px; flex-wrap:wrap; margin:17px 0; }
+    .tech span { padding:6px 9px; border-radius:7px; border:1px solid #292b34; background:#14151b; color:#b8bac4; font-size:.7rem; }
+    .actions { display:flex; gap:9px; flex-wrap:wrap; }
+    .btn { border:1px solid transparent; border-radius:10px; padding:10px 14px; cursor:pointer; background:var(--accent); color:#fff; font-weight:800; }
+    .btn.ghost { background:transparent; border-color:#2e3038; color:#d7d8de; }
+    .btn:hover { transform:translateY(-1px); }
+    .empty { grid-column:span 12; text-align:center; padding:50px 20px; color:#797b86; border:1px dashed #292a33; border-radius:20px; display:none; }
+    footer { border-top:1px solid rgba(255,255,255,.06); padding:28px 5vw 50px; color:#737580; text-align:center; font-size:.8rem; }
+    .modal { display:none; position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.78); backdrop-filter:blur(12px); padding:20px; }
+    .modal.show { display:grid; place-items:center; }
+    .modal-card { max-width:760px; width:100%; background:#111217; border:1px solid #2b2d36; border-radius:22px; padding:26px; box-shadow:var(--shadow); position:relative; }
+    .close { position:absolute; right:15px; top:12px; width:38px; height:38px; border-radius:50%; background:#1b1c22; color:#fff; border:1px solid #2a2c34; cursor:pointer; }
+    .modal h2 { margin-bottom:8px; }
+    .modal p { color:#a5a7b1; line-height:1.75; }
+    .modal ul { margin:15px 0 0 18px; color:#a5a7b1; line-height:1.9; }
+    @media (max-width:850px) {
+      .project,.project.featured { grid-column:span 12; }
+      .bet-slip { grid-template-columns:1fr; }
+      .portfolio { grid-template-columns:1fr; }
+    }
+    @media (max-width:620px) {
+      .hero { padding-top:58px; }
+      .hero p { font-size:.92rem; }
+      .browser-body,.school-body { grid-template-columns:82px 1fr; }
+      .visual { min-height:235px; padding:12px; }
+      .metric-row { grid-template-columns:1fr 1fr 1fr; }
+      .metric { height:56px; }
+      .project-content { padding:20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="logo">DË BÎG <span>LØVËD</span></a>
+    <a class="back" href="index.html#web">← Back to Portfolio</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="tag">Selected Work / Web Engineering</span>
+      <h1>Real products. <span>Real interfaces.</span> Creative execution.</h1>
+      <p>Explore a realistic project gallery showing the kind of digital products this portfolio can present: banking dashboards, betting platforms, school portals, mobile experiences and high-end personal websites.</p>
+    </section>
+
+    <div class="filters" role="tablist" aria-label="Project filters">
+      <button class="filter active" data-filter="all">All Projects</button>
+      <button class="filter" data-filter="web">Web Apps</button>
+      <button class="filter" data-filter="mobile">Mobile Apps</button>
+      <button class="filter" data-filter="business">Business</button>
+      <button class="filter" data-filter="portfolio">Portfolio</button>
+    </div>
+
+    <section class="projects" id="projects">
+      <article class="project featured" data-category="web business">
+        <div class="visual">
+          <div class="browser">
+            <div class="browser-head"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+            <div class="browser-body">
+              <aside class="side"><i></i><i></i><i></i><i></i><i></i></aside>
+              <div class="dashboard">
+                <div class="metric-row"><div class="metric"><b>₦4.82M</b><small>Total Balance</small></div><div class="metric"><b>+18.4%</b><small>Growth</small></div><div class="metric"><b>1,284</b><small>Transfers</small></div></div>
+                <div class="chart"><svg viewBox="0 0 500 140" preserveAspectRatio="none"><polyline points="0,115 60,100 115,108 170,70 225,82 280,48 335,60 390,30 450,42 500,18" fill="none" stroke="#ff2a2a" stroke-width="4"/><polyline points="0,115 60,100 115,108 170,70 225,82 280,48 335,60 390,30 450,42 500,18 500,140 0,140" fill="rgba(255,42,42,.10)" stroke="none"/></svg></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-meta"><h2>FinBank — Digital Banking Dashboard</h2><span class="tag">Featured</span></div>
+          <p>A premium banking interface concept with account summaries, transaction intelligence, transfer flows, analytics, secure profile areas and responsive layouts for desktop and mobile.</p>
+          <div class="tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>API Ready</span><span>Responsive UI</span></div>
+          <div class="actions"><button class="btn" onclick="openProject('FinBank')">View Case Study</button><button class="btn ghost" onclick="scrollToContact()">Request Similar App</button></div>
+        </div>
+      </article>
+
+      <article class="project" data-category="web business">
+        <div class="visual">
+          <div class="bet-slip">
+            <div class="bets"><strong style="font-size:.8rem">LIVE MATCHES</strong><div class="match"><small>Premier League • LIVE 72'</small><div style="display:flex;justify-content:space-between;margin-top:6px;font-weight:800;font-size:.75rem"><span>Wolves</span><span>1 - 2</span><span>Arsenal</span></div><div class="odds"><span>1.90</span><span>3.20</span><span>4.10</span></div></div><div class="match"><small>Champions League</small><div style="display:flex;justify-content:space-between;margin-top:6px;font-size:.75rem"><span>Madrid</span><span>vs</span><span>Inter</span></div></div></div>
+            <div class="slip"><h4>BET SLIP</h4><div class="ticket">Arsenal to Win<br><b>1.90</b></div><div class="ticket">Over 2.5 Goals<br><b>1.78</b></div><div style="display:flex;justify-content:space-between;font-size:.72rem;margin-top:15px"><span>Potential Win</span><b>₦32,400</b></div></div>
+          </div>
+        </div>
+        <div class="project-content"><div class="project-meta"><h2>WinSpark — Sports Betting Platform</h2><span>Web App</span></div><p>A realistic sportsbook experience with live events, betting slips, odds cards, account wallet, match center and mobile-first interaction patterns.</p><div class="tech"><span>Live UI</span><span>Odds Engine Ready</span><span>Wallet</span><span>Responsive</span></div><div class="actions"><button class="btn" onclick="openProject('WinSpark')">View Case Study</button></div></div>
+      </article>
+
+      <article class="project" data-category="mobile business">
+        <div class="visual"><div class="mobile"><div class="notch"></div><div class="app-brand">FINOVA</div><div class="balance"><small>Available Balance</small><strong>₦285,400</strong></div><div class="quick"><span>Send</span><span>Scan</span><span>Cards</span><span>More</span></div><div class="list"><div>Netflix · -₦5,800</div><div>Salary · +₦450,000</div><div>Transfer · -₦27,000</div><div>Airtime · -₦2,000</div></div></div></div>
+        <div class="project-content"><div class="project-meta"><h2>Finova — Mobile Finance App</h2><span>Mobile</span></div><p>Mobile banking UI concept with a clean wallet, quick actions, payment history, card controls and biometric-friendly interaction patterns.</p><div class="tech"><span>Mobile UI</span><span>Payments</span><span>Auth Ready</span></div><div class="actions"><button class="btn" onclick="openProject('Finova')">View Case Study</button></div></div>
+      </article>
+
+      <article class="project" data-category="web business">
+        <div class="visual"><div class="school"><div class="school-head"><strong>SchoolSphere</strong><span style="font-size:.62rem">Admin Portal</span></div><div class="school-body"><aside class="school-side"><b>Dashboard</b><p>Students</p><p>Results</p><p>Attendance</p><p>Fees</p></aside><div class="school-main"><h3 style="font-size:.95rem">Welcome back, Admin</h3><p style="margin:4px 0 12px;font-size:.62rem;color:#777">Thursday • School performance overview</p><div class="grade-grid"><div class="grade"><strong>1,284</strong><small>Students</small></div><div class="grade"><strong>96%</strong><small>Attendance</small></div><div class="grade"><strong>87%</strong><small>Results</small></div></div></div></div></div></div>
+        <div class="project-content"><div class="project-meta"><h2>SchoolSphere — School Management System</h2><span>Dashboard</span></div><p>School administration concept for student records, fee tracking, attendance, result publishing, teacher dashboards and parent-facing services.</p><div class="tech"><span>Admin Panel</span><span>Student Portal</span><span>Reports</span></div><div class="actions"><button class="btn" onclick="openProject('SchoolSphere')">View Case Study</button></div></div>
+      </article>
+
+      <article class="project" data-category="web portfolio">
+        <div class="visual"><div class="portfolio"><div class="portfolio-card"><div class="tag" style="font-size:.55rem">Creative developer</div><h3 style="font-size:1.3rem;margin-top:14px">Monday Victor</h3><p>Web experiences, AI interfaces, design systems and digital products built to look premium and perform on every screen.</p></div><div class="portfolio-card"><div style="height:120px;border-radius:12px;background:linear-gradient(135deg,#21232c,#ff2a2a 150%);display:grid;place-items:center;font-size:2rem">MV</div></div></div></div>
+        <div class="project-content"><div class="project-meta"><h2>Brand Portfolio — Personal Brand System</h2><span>Portfolio</span></div><p>A bold personal portfolio architecture combining services, case studies, social proof, interactive transitions and direct client conversion.</p><div class="tech"><span>Personal Brand</span><span>Case Studies</span><span>Lead Capture</span></div><div class="actions"><button class="btn" onclick="openProject('Brand Portfolio')">View Case Study</button></div></div>
+      </article>
+
+      <article class="project" data-category="web business">
+        <div class="visual"><div class="browser" style="max-width:620px"><div class="browser-head"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div style="padding:20px"><div style="display:flex;justify-content:space-between;align-items:center"><strong>SkillNova</strong><span style="font-size:.6rem;color:#8a8c96">AFRICAN TALENT MARKET</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px"><div style="height:115px;border:1px solid #292b34;border-radius:12px;padding:12px"><small style="color:#777;font-size:.55rem">TOP FREELANCER</small><h3 style="margin-top:7px;font-size:.9rem">Frontend Developer</h3><p style="margin-top:7px;color:#8a8c96;font-size:.6rem">Lagos • 98% Success</p></div><div style="height:115px;border:1px solid #292b34;border-radius:12px;padding:12px"><small style="color:#777;font-size:.55rem">ACTIVE PROJECTS</small><h3 style="margin-top:7px;font-size:.9rem">124</h3><p style="margin-top:7px;color:#8a8c96;font-size:.6rem">Growing marketplace</p></div></div></div></div></div>
+        <div class="project-content"><div class="project-meta"><h2>SkillNova — Freelance Marketplace</h2><span>Marketplace</span></div><p>A marketplace concept connecting African talent with businesses through profiles, service listings, messaging, project workflows and reviews.</p><div class="tech"><span>Marketplace</span><span>Profiles</span><span>Messaging</span><span>Reviews</span></div><div class="actions"><button class="btn" onclick="openProject('SkillNova')">View Case Study</button></div></div>
+      </article>
+
+      <div class="empty" id="empty">No projects found in this category yet.</div>
+    </section>
+  </main>
+
+  <footer id="contact">Ready to build a real product? <a href="index.html#contact" style="color:#fff;text-decoration:underline">Start a project →</a></footer>
+
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close" onclick="closeProject()" aria-label="Close">×</button>
+      <span class="tag">Project Case Study</span>
+      <h2 id="modalTitle" style="margin-top:14px"></h2>
+      <p id="modalDescription"></p>
+      <ul id="modalList"></ul>
+      <div class="actions" style="margin-top:20px"><a class="btn" href="index.html#contact">Discuss This Project</a><button class="btn ghost" onclick="closeProject()">Close</button></div>
+    </div>
+  </div>
+
+  <script>
+    const details = {
+      'FinBank': {desc:'A realistic digital banking product direction designed around clarity, trust and fast transactions.', list:['Dashboard with account summaries and financial analytics','Transfer, payment and transaction-history flows','Responsive structure for desktop, tablet and mobile','Architecture ready for authentication and banking APIs']},
+      'WinSpark': {desc:'A sportsbook experience concept built around live match discovery and a high-speed betting flow.', list:['Live matches and event cards','Odds selection and dynamic bet slip','Wallet/account area and responsible account controls','Responsive mobile-first match centre']},
+      'Finova': {desc:'A mobile finance app concept focused on everyday money movement.', list:['Balance and wallet overview','Quick-send, card and scan actions','Transaction timeline and payment categories','Mobile interaction patterns designed for one-hand use']},
+      'SchoolSphere': {desc:'An end-to-end school platform concept connecting administrators, teachers, students and parents.', list:['Student records and attendance','Fee management and transaction tracking','Results publishing and academic reports','Separate dashboards for administration and users']},
+      'Brand Portfolio': {desc:'A premium personal-brand system designed to turn a portfolio into a client-acquisition engine.', list:['Interactive hero and service architecture','Case-study presentation system','Lead-generation and contact pathways','Responsive layout with motion-ready sections']},
+      'SkillNova': {desc:'A marketplace concept built for African freelancers and businesses.', list:['Freelancer profiles and service listings','Search/discovery and category architecture','Project workflows, messaging and reviews','Foundation for secure marketplace transactions']}
+    };
+
+    const modal=document.getElementById('projectModal');
+    function openProject(name){
+      const d=details[name]; if(!d)return;
+      document.getElementById('modalTitle').textContent=name;
+      document.getElementById('modalDescription').textContent=d.desc;
+      document.getElementById('modalList').innerHTML=d.list.map(item=>`<li>${item}</li>`).join('');
+      modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+    }
+    function closeProject(){ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    modal.addEventListener('click',e=>{if(e.target===modal)closeProject();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProject();});
+
+    const filters=[...document.querySelectorAll('.filter')];
+    const cards=[...document.querySelectorAll('.project')];
+    const empty=document.getElementById('empty');
+    filters.forEach(button=>button.addEventListener('click',()=>{
+      filters.forEach(b=>b.classList.remove('active')); button.classList.add('active');
+      const value=button.dataset.filter; let visible=0;
+      cards.forEach(card=>{const ok=value==='all'||card.dataset.category.split(' ').includes(value); card.style.display=ok?'block':'none'; if(ok)visible++;});
+      empty.style.display=visible?'none':'block';
+    }));
+    function scrollToContact(){document.getElementById('contact').scrollIntoView({behavior:'smooth'});}
+  </script>
+</body>
+</html>
